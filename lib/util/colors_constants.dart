@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'numbers.dart';
+
 abstract class ColorsConstants {
   static const Color appThemeColor = Color(
-    0xFF032445,
+    Numbers.appThemeColorHex,
   );
 }

@@ -37,6 +37,25 @@ class Movie {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'poster_path': posterPath,
+      'adult': adult,
+      'overview': overview,
+      'release_date': releaseDate,
+      'genre_ids': genreIds.map((genreId) => genreId).toList(),
+      'id': id,
+      'original_title': originalTitle,
+      'original_language': originalLanguage,
+      'title': title,
+      'backdrop_path': backdropPath,
+      'popularity': popularity,
+      'vote_count': voteCount,
+      'video': video,
+      'vote_average': voteAverage,
+    };
+  }
+
   final String? posterPath;
   final bool adult;
   final String overview;
