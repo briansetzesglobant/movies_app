@@ -1,12 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'movie_api_service.dart';
+import 'package:movies_app/util/strings.dart';
+import 'app_routes.dart';
 import 'util/colors_constants.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp().then((value) {
+    runApp(
+      const MyApp(),
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -19,12 +23,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-        color: ColorsConstants.appThemeColor,
-      )),
-      home: HomePage(
-        movieApiService: MovieApiService(),
+        appBarTheme: const AppBarTheme(
+          color: ColorsConstants.appThemeColor,
+        ),
       ),
+      initialRoute: Strings.homeRoute,
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }

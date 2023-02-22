@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/util/numbers.dart';
-import 'package:movies_app/util/strings.dart';
-import 'util/text_styles.dart';
+import '../util/assets.dart';
+import '../util/colors_constants.dart';
+import '../util/text_styles.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({
@@ -21,7 +22,7 @@ class MovieCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.blueGrey,
+          color: ColorsConstants.appThemeColor,
           width: Numbers.movieCardBorderWidth,
         ),
         borderRadius: BorderRadius.circular(
@@ -36,7 +37,7 @@ class MovieCard extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyles.styleMovieTitle,
+              style: TextStyles.movieCardTitleTextStyle,
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -51,15 +52,15 @@ class MovieCard extends StatelessWidget {
                 ),
                 child: CachedNetworkImage(
                   placeholder: (context, url) => Image.asset(
-                    Strings.movieCardImageError,
-                    width: Numbers.movieCardCachedNetworkImageSize,
-                    height: Numbers.movieCardCachedNetworkImageSize,
+                    Assets.movieCardDefaultThumbImage,
+                    width: Numbers.movieCardDefaultImageSize,
+                    height: Numbers.movieCardDefaultImageSize,
                   ),
                   imageUrl: image,
                   errorWidget: (context, url, error) => Image.asset(
-                    Strings.movieCardImageError,
-                    width: Numbers.movieCardCachedNetworkImageSize,
-                    height: Numbers.movieCardCachedNetworkImageSize,
+                    Assets.movieCardDefaultThumbImage,
+                    width: Numbers.movieCardDefaultImageSize,
+                    height: Numbers.movieCardDefaultImageSize,
                   ),
                 ),
               ),
