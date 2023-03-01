@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/movie_data_base.dart';
-import 'package:movies_app/use_case/movie_use_case.dart';
+import 'package:movies_app/use_case/use_case_interface.dart';
 import 'package:movies_app/util/strings.dart';
 import 'package:movies_app/widget/movie_text.dart';
 import 'home_page.dart';
-import 'movie_api_service.dart';
+import 'initial_page.dart';
 
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Strings.initialRoute:
+        return MaterialPageRoute(
+          builder: (_) => const InitialPage(title: Strings.initialPageTitle),
+        );
       case Strings.homeRoute:
         return MaterialPageRoute(
           builder: (_) => HomePage(
-            movieUseCase: MovieUseCase(
-              movieApiService: MovieApiService(),
-              movieDataBase: MovieDatabase(),
-            ),
+            title: (settings.arguments!
+                as Map<String, dynamic>)[Strings.argumentTitle] as String,
+            movieUseCase: (settings.arguments!
+                    as Map<String, dynamic>)[Strings.argumentData]
+                as UseCaseInterface,
           ),
         );
       default:
