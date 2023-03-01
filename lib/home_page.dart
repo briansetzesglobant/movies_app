@@ -4,7 +4,7 @@ import 'package:movies_app/widget/movie_card.dart';
 import 'package:movies_app/util/numbers.dart';
 import 'data_state.dart';
 import 'model/movies_list.dart';
-import 'use_case/movie_use_case.dart';
+import 'use_case/use_case_interface.dart';
 import 'util/api_service.dart';
 import 'util/strings.dart';
 import 'widget/movie_text.dart';
@@ -12,12 +12,14 @@ import 'widget/movie_text.dart';
 class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
+    required this.title,
     required this.movieUseCase,
   }) : super(
           key: key,
         );
 
-  final MovieUseCase movieUseCase;
+  final String title;
+  final UseCaseInterface movieUseCase;
 
   Widget _getPage(DataState<MoviesList> moviesList) {
     switch (moviesList.type) {
@@ -75,15 +77,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          Strings.homePageTitle,
+        title: Text(
+          title,
         ),
       ),
       body: SafeArea(
-        child: FutureBuilder(
-          future: movieUseCase(),
+        child: FutureBuilder<DataState<MoviesList>>(
+          future: movieUseCase() as Future<DataState<MoviesList>>,
           builder: (
-            context,
+            BuildContext context,
             AsyncSnapshot<DataState<MoviesList>> snapshot,
           ) {
             if (snapshot.hasData) {

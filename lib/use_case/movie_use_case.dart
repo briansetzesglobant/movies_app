@@ -54,10 +54,10 @@ class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
       if (results.isNotEmpty) {
         DataSuccess<MoviesList> dataSuccess = DataSuccess(
           MoviesList(
-            page: Numbers.moviePageValueDefault,
+            page: Numbers.moviePageDefaultValue,
             results: await movieDataBase.getMovies(),
-            totalResults: Numbers.movieTotalResultsValueDefault,
-            totalPages: Numbers.movieTotalPagesValueDefault,
+            totalResults: Numbers.movieTotalResultsDefaultValue,
+            totalPages: Numbers.movieTotalPagesDefaultValue,
           ),
         );
         return dataSuccess;
