@@ -38,7 +38,7 @@ class InitialPage extends StatelessWidget {
                       Strings.argumentTitle: Strings.movieUseCaseTitle,
                       Strings.argumentData: MovieUseCase(
                         movieApiService: MovieApiService(),
-                        movieDataBase: MovieDatabase(),
+                        movieDataBase: MovieDatabase.instance,
                       ),
                     },
                   );
@@ -66,7 +66,7 @@ class InitialPage extends StatelessWidget {
                           Strings.popularityMovieUseCaseTitle,
                       Strings.argumentData: PopularityMovieUseCase(
                         movieApiService: MovieApiService(),
-                        movieDataBase: MovieDatabase(),
+                        movieDataBase: MovieDatabase.instance,
                       ),
                     },
                   );

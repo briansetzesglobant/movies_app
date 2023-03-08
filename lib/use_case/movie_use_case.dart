@@ -29,11 +29,8 @@ class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
             }
           }
           return DataSuccess(
-            MoviesList(
-              page: moviesList.data!.page,
+            moviesList.data!.copyWith(
               results: await movieDataBase.getMovies(),
-              totalResults: moviesList.data!.totalResults,
-              totalPages: moviesList.data!.totalPages,
             ),
           );
         } catch (exception) {
