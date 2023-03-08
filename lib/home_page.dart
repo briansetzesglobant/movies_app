@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/bloc/bloc_interface.dart';
 import 'package:movies_app/util/assets.dart';
 import 'package:movies_app/widget/movie_card.dart';
 import 'package:movies_app/util/numbers.dart';
@@ -13,13 +14,13 @@ class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
     required this.title,
-    required this.movieUseCase,
+    required this.blocInterface,
   }) : super(
           key: key,
         );
 
   final String title;
-  final UseCaseInterface movieUseCase;
+  final BlocInterface blocInterface;
 
   Widget _getPage(DataState<MoviesList> moviesList) {
     switch (moviesList.type) {
@@ -83,7 +84,7 @@ class HomePage extends StatelessWidget {
       ),
       body: SafeArea(
         child: FutureBuilder<DataState<MoviesList>>(
-          future: movieUseCase() as Future<DataState<MoviesList>>,
+          future: blocInterface.getMoviesList(),
           builder: (
             BuildContext context,
             AsyncSnapshot<DataState<MoviesList>> snapshot,
