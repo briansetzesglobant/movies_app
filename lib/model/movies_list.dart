@@ -20,6 +20,20 @@ class MoviesList {
     );
   }
 
+  MoviesList copyWith({
+    int? page,
+    int? totalResults,
+    int? totalPages,
+    List<Movie>? results,
+  }) {
+    return MoviesList(
+      page: page ?? this.page,
+      results: results ?? this.results,
+      totalResults: totalResults ?? this.totalResults,
+      totalPages: totalPages ?? this.totalPages,
+    );
+  }
+
   final int page;
   final int totalResults;
   final int totalPages;
