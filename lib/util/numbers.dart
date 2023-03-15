@@ -11,6 +11,7 @@ abstract class Numbers {
 
   static const double initialPageTextSize = 30.0;
   static const double initialPageSizedBox = 50.0;
+  static const double initialPagePaddingHorizontal = 35.0;
 
   static const int moviePageDefaultValue = 1;
   static const int movieTotalResultsDefaultValue = 20;
