@@ -1,4 +1,5 @@
 import 'package:movies_app/model/movies_list.dart';
+import 'package:movies_app/strategy/sorting_strategy_interface.dart';
 import 'package:movies_app/use_case/use_case_interface.dart';
 import 'package:movies_app/util/numbers.dart';
 import '../data_state.dart';
@@ -11,10 +12,12 @@ class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
   MovieUseCase({
     required this.movieApiService,
     required this.movieDataBase,
+    required this.sortingStrategyInterface,
   });
 
   final MovieApiService movieApiService;
   final MovieDatabase movieDataBase;
+  final SortingStrategyInterface sortingStrategyInterface;
 
   @override
   Future<DataState<MoviesList>> call() async {
@@ -24,13 +27,14 @@ class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
         try {
           if (moviesList.data!.results.isNotEmpty == true) {
             await movieDataBase.dropMovieCollection();
-            for (Movie movie in moviesList.data!.results) {
+            for (var movie in moviesList.data!) {
               await movieDataBase.insertMovie(movie);
             }
           }
           return DataSuccess(
             moviesList.data!.copyWith(
-              results: await movieDataBase.getMovies(),
+              results: sortingStrategyInterface
+                  .execute(await movieDataBase.getMovies()),
             ),
           );
         } catch (exception) {
@@ -52,7 +56,8 @@ class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
         DataSuccess<MoviesList> dataSuccess = DataSuccess(
           MoviesList(
             page: Numbers.moviePageDefaultValue,
-            results: await movieDataBase.getMovies(),
+            results: sortingStrategyInterface
+                .execute(await movieDataBase.getMovies()),
             totalResults: Numbers.movieTotalResultsDefaultValue,
             totalPages: Numbers.movieTotalPagesDefaultValue,
           ),

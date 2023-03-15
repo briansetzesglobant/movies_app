@@ -11,7 +11,9 @@ class AppRoutes {
     switch (settings.name) {
       case Strings.initialRoute:
         return MaterialPageRoute(
-          builder: (_) => const InitialPage(title: Strings.initialPageTitle),
+          builder: (_) => const InitialPage(
+            title: Strings.initialPageTitle,
+          ),
         );
       case Strings.homeRoute:
         return MaterialPageRoute(

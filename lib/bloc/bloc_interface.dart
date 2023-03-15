@@ -3,5 +3,7 @@ import '../data_state.dart';
 import 'bloc.dart';
 
 abstract class BlocInterface extends Bloc {
-  Future<DataState<MoviesList>> getMoviesList();
+  Stream<DataState<MoviesList>> get moviesListStream;
+
+  void getMoviesList();
 }

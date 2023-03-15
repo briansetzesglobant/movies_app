@@ -5,12 +5,11 @@ import 'package:movies_app/widget/movie_card.dart';
 import 'package:movies_app/util/numbers.dart';
 import 'data_state.dart';
 import 'model/movies_list.dart';
-import 'use_case/use_case_interface.dart';
 import 'util/api_service.dart';
 import 'util/strings.dart';
 import 'widget/movie_text.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
     required this.title,
@@ -21,6 +20,23 @@ class HomePage extends StatelessWidget {
 
   final String title;
   final BlocInterface blocInterface;
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    widget.blocInterface.getMoviesList();
+  }
+
+  @override
+  void dispose() {
+    widget.blocInterface.dispose();
+    super.dispose();
+  }
 
   Widget _getPage(DataState<MoviesList> moviesList) {
     switch (moviesList.type) {
@@ -79,12 +95,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          title,
+          widget.title,
         ),
       ),
       body: SafeArea(
-        child: FutureBuilder<DataState<MoviesList>>(
-          future: blocInterface.getMoviesList(),
+        child: StreamBuilder<DataState<MoviesList>>(
+          stream: widget.blocInterface.moviesListStream,
           builder: (
             BuildContext context,
             AsyncSnapshot<DataState<MoviesList>> snapshot,
