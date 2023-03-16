@@ -1,4 +1,7 @@
+import 'package:get/get.dart';
 import 'package:movies_app/model/movies_list.dart';
+import 'package:movies_app/strategy/ascending_sort_strategy.dart';
+import 'package:movies_app/strategy/descending_sort_strategy.dart';
 import 'package:movies_app/strategy/sorting_strategy_interface.dart';
 import 'package:movies_app/use_case/use_case_interface.dart';
 import 'package:movies_app/util/numbers.dart';
@@ -10,14 +13,15 @@ import '../util/strings.dart';
 
 class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
   MovieUseCase({
-    required this.movieApiService,
-    required this.movieDataBase,
-    required this.sortingStrategyInterface,
+    required this.sortingWay,
   });
 
-  final MovieApiService movieApiService;
-  final MovieDatabase movieDataBase;
-  final SortingStrategyInterface sortingStrategyInterface;
+  final bool sortingWay;
+  final MovieApiService movieApiService = Get.find<MovieApiService>();
+  final MovieDatabase movieDataBase = Get.find<MovieDatabase>();
+  late final SortingStrategyInterface sortingStrategyInterface = sortingWay
+      ? Get.find<AscendingSortStrategy>()
+      : Get.find<DescendingSortStrategy>();
 
   @override
   Future<DataState<MoviesList>> call() async {

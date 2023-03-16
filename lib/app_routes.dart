@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/bloc/movie_bloc.dart';
-import 'package:movies_app/use_case/use_case_interface.dart';
 import 'package:movies_app/util/strings.dart';
 import 'package:movies_app/widget/movie_text.dart';
 import 'home_page.dart';
@@ -20,10 +18,10 @@ class AppRoutes {
           builder: (_) => HomePage(
             title: (settings.arguments!
                 as Map<String, dynamic>)[Strings.argumentTitle],
-            blocInterface: MovieBloc(
-              useCaseInterface: (settings.arguments!
-                  as Map<String, dynamic>)[Strings.argumentData],
-            ),
+            useCase: (settings.arguments!
+                as Map<String, dynamic>)[Strings.argumentUseCase],
+            sortingWay: (settings.arguments!
+                as Map<String, dynamic>)[Strings.argumentSortingWay],
           ),
         );
       default:
