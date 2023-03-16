@@ -1,10 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movies_app/util/strings.dart';
 import 'app_routes.dart';
+import 'di.dart';
 import 'util/colors_constants.dart';
 
 void main() {
+  final Di di = Di();
+  di.injectDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp().then((value) {
     runApp(
@@ -20,7 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(

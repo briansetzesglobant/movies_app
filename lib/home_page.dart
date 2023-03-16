@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movies_app/bloc/bloc_interface.dart';
+import 'package:movies_app/bloc/movie_bloc.dart';
 import 'package:movies_app/util/assets.dart';
 import 'package:movies_app/widget/movie_card.dart';
 import 'package:movies_app/util/numbers.dart';
@@ -10,16 +12,29 @@ import 'util/strings.dart';
 import 'widget/movie_text.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({
+  HomePage({
     Key? key,
     required this.title,
-    required this.blocInterface,
+    required this.useCase,
+    required this.sortingWay,
   }) : super(
           key: key,
         );
 
   final String title;
-  final BlocInterface blocInterface;
+  final bool useCase;
+  final bool sortingWay;
+  late final BlocInterface blocInterface = useCase
+      ? Get.find<MovieBloc>(
+          tag: sortingWay
+              ? Strings.movieUseCaseAscendingSortStrategy
+              : Strings.movieUseCaseDescendingSortStrategy,
+        )
+      : Get.find<MovieBloc>(
+          tag: sortingWay
+              ? Strings.popularityMovieUseCaseAscendingSortStrategy
+              : Strings.popularityMovieUseCaseDescendingSortStrategy,
+        );
 
   @override
   State<HomePage> createState() => _HomePageState();

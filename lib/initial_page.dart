@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/strategy/ascending_sort_strategy.dart';
-import 'package:movies_app/strategy/descending_sort_strategy.dart';
 import 'package:movies_app/util/colors_constants.dart';
 import 'package:movies_app/util/numbers.dart';
-import 'movie_api_service.dart';
-import 'movie_data_base.dart';
-import 'use_case/movie_use_case.dart';
-import 'use_case/popularity_movie_use_case.dart';
 import 'util/strings.dart';
 
 class InitialPage extends StatefulWidget {
@@ -72,13 +66,8 @@ class _InitialPageState extends State<InitialPage> {
                     Strings.homeRoute,
                     arguments: {
                       Strings.argumentTitle: Strings.movieUseCaseTitle,
-                      Strings.argumentData: MovieUseCase(
-                        movieApiService: MovieApiService(),
-                        movieDataBase: MovieDatabase.instance,
-                        sortingStrategyInterface: sortingWay
-                            ? AscendingSortStrategy()
-                            : DescendingSortStrategy(),
-                      ),
+                      Strings.argumentUseCase: true,
+                      Strings.argumentSortingWay: sortingWay,
                     },
                   );
                 },
@@ -103,13 +92,8 @@ class _InitialPageState extends State<InitialPage> {
                     arguments: {
                       Strings.argumentTitle:
                           Strings.popularityMovieUseCaseTitle,
-                      Strings.argumentData: PopularityMovieUseCase(
-                        movieApiService: MovieApiService(),
-                        movieDataBase: MovieDatabase.instance,
-                        sortingStrategyInterface: sortingWay
-                            ? AscendingSortStrategy()
-                            : DescendingSortStrategy(),
-                      ),
+                      Strings.argumentUseCase: false,
+                      Strings.argumentSortingWay: sortingWay,
                     },
                   );
                 },

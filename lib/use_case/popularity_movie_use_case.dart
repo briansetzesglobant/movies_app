@@ -6,13 +6,9 @@ import 'movie_use_case.dart';
 
 class PopularityMovieUseCase extends MovieUseCase {
   PopularityMovieUseCase({
-    required movieApiService,
-    required movieDataBase,
-    required sortingStrategyInterface,
+    required sortingWay,
   }) : super(
-          movieApiService: movieApiService,
-          movieDataBase: movieDataBase,
-          sortingStrategyInterface: sortingStrategyInterface,
+          sortingWay: sortingWay,
         );
 
   @override

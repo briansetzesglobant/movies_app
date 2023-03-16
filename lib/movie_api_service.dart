@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:movies_app/data_state.dart';
 import 'package:movies_app/util/api_service.dart';
@@ -8,7 +9,7 @@ import 'model/movies_list.dart';
 import 'util/strings.dart';
 
 class MovieApiService {
-  Client client = Client();
+  Client client = Get.find<Client>();
 
   Future<DataState<MoviesList>> getMoviesList() async {
     try {
