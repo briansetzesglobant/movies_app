@@ -15,15 +15,17 @@ class PopularityMovieUseCase extends MovieUseCase {
   Future<DataState<MoviesList>> call() async {
     DataState<MoviesList> moviesList = await super.call();
     List<Movie> movies = [];
-    for (var movie in moviesList.data!) {
-      if (movie.popularity >= Numbers.popularityCondition) {
-        movies.add(movie);
+    if (moviesList.type == DataStateType.success) {
+      for (var movie in moviesList.data!) {
+        if (movie.popularity >= Numbers.popularityCondition) {
+          movies.add(movie);
+        }
       }
+      return DataSuccess(
+        moviesList.data!.copyWith(results: movies),
+      );
+    } else {
+      return moviesList;
     }
-    return moviesList.type == DataStateType.success
-        ? DataSuccess(
-            moviesList.data!.copyWith(results: movies),
-          )
-        : moviesList;
   }
 }
