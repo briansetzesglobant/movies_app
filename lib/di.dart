@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:movies_app/bloc/movie_bloc.dart';
 import 'package:movies_app/movie_api_service.dart';
+import 'package:movies_app/repository/movie_repository.dart';
 import 'package:movies_app/strategy/ascending_sort_strategy.dart';
 import 'package:movies_app/use_case/popularity_movie_use_case.dart';
 import 'movie_data_base.dart';
@@ -16,6 +17,9 @@ class Di {
     );
     Get.lazyPut(
       () => MovieApiService(),
+    );
+    Get.lazyPut(
+      () => MovieRepository(),
     );
     Get.lazyPut(
       () => MovieDatabase.instance,
