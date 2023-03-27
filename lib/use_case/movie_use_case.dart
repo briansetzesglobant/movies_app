@@ -6,7 +6,6 @@ import 'package:movies_app/strategy/descending_sort_strategy.dart';
 import 'package:movies_app/strategy/sorting_strategy_interface.dart';
 import 'package:movies_app/use_case/use_case_interface.dart';
 import '../data_state.dart';
-import '../movie_data_base.dart';
 
 class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
   MovieUseCase({
@@ -15,7 +14,6 @@ class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
 
   final bool sortingWay;
   final MovieRepository movieRepository = Get.find<MovieRepository>();
-  final MovieDatabase movieDataBase = Get.find<MovieDatabase>();
   late final SortingStrategyInterface sortingStrategyInterface = sortingWay
       ? Get.find<AscendingSortStrategy>()
       : Get.find<DescendingSortStrategy>();
@@ -26,8 +24,7 @@ class MovieUseCase extends UseCaseInterface<DataState<MoviesList>> {
     if (moviesList.type == DataStateType.success) {
       return DataSuccess(
         moviesList.data!.copyWith(
-          results:
-              sortingStrategyInterface.execute(await movieDataBase.getMovies()),
+          results: sortingStrategyInterface.execute(moviesList.data!.results),
         ),
       );
     } else {

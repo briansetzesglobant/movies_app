@@ -9,7 +9,7 @@ import '../util/strings.dart';
 import 'repository_interface.dart';
 
 class MovieRepository extends RepositoryInterface {
-  MovieApiService movieApiService = Get.find<MovieApiService>();
+  final MovieApiService movieApiService = Get.find<MovieApiService>();
   final MovieDatabase movieDataBase = Get.find<MovieDatabase>();
 
   @override
@@ -48,7 +48,7 @@ class MovieRepository extends RepositoryInterface {
         DataSuccess<MoviesList> dataSuccess = DataSuccess(
           MoviesList(
             page: Numbers.moviePageDefaultValue,
-            results: await movieDataBase.getMovies(),
+            results: results,
             totalResults: Numbers.movieTotalResultsDefaultValue,
             totalPages: Numbers.movieTotalPagesDefaultValue,
           ),

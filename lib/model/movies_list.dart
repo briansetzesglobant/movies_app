@@ -14,9 +14,9 @@ class MoviesList extends Iterable<Movie> {
         jsonList.map((movie) => Movie.fromJson(movie)).toList();
     return MoviesList(
       page: json['page'],
+      results: moviesList,
       totalResults: json['total_results'],
       totalPages: json['total_pages'],
-      results: moviesList,
     );
   }
 

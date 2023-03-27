@@ -40,6 +40,7 @@ class _InitialPageState extends State<InitialPage> {
                   horizontal: Numbers.initialPagePaddingHorizontal,
                 ),
                 child: ElevatedButton(
+                  key: const Key('elevated-button-1'),
                   onPressed: () {
                     setState(() {
                       sortingWay = !sortingWay;
