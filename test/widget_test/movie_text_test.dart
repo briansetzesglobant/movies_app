@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movies_app/widget/movie_text.dart';
+import 'package:movies_app/src/presentation/widget/movie_text.dart';
 
 void main() {
   testWidgets('MovieText() should display the movie text',

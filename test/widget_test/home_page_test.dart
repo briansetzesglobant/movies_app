@@ -3,12 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movies_app/bloc/movie_bloc.dart';
-import 'package:movies_app/data_state.dart';
-import 'package:movies_app/home_page.dart';
-import 'package:movies_app/model/movie.dart';
-import 'package:movies_app/model/movies_list.dart';
-import 'package:movies_app/widget/movie_card.dart';
+import 'package:movies_app/src/data/model/movie.dart';
+import 'package:movies_app/src/data/model/movies_list.dart';
+import 'package:movies_app/src/domain/entity/movies_list_entity.dart';
+import 'package:movies_app/src/presentation/bloc/movie_bloc.dart';
+import 'package:movies_app/src/core/resource/data_state.dart';
+import 'package:movies_app/src/presentation/view/home_page.dart';
+import 'package:movies_app/src/presentation/widget/movie_card.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'home_page_test.mocks.dart';
 
@@ -17,15 +18,15 @@ import 'home_page_test.mocks.dart';
 ])
 void main() {
   late MovieBloc movieBloc;
-  late DataState<MoviesList> dataStateSuccess;
-  late DataState<MoviesList> dataStateEmpty;
-  late DataState<MoviesList> dataStateFailed;
-  late MoviesList moviesList;
+  late DataState<MoviesListEntity> dataStateSuccess;
+  late DataState<MoviesListEntity> dataStateEmpty;
+  late DataState<MoviesListEntity> dataStateFailed;
+  late MoviesListEntity moviesListEntity;
 
   setUp(() {
     movieBloc = MockMovieBloc();
     Get.replace(movieBloc);
-    moviesList = MoviesList(
+    moviesListEntity = MoviesListEntity(
       page: 1,
       results: [
         Movie(
@@ -33,7 +34,7 @@ void main() {
           adult: true,
           overview: 'overview',
           releaseDate: 'releaseDate',
-          genreIds: [],
+          genreIds: <int>[],
           id: 1,
           originalTitle: 'originalTitle',
           originalLanguage: 'originalLanguage',
@@ -49,7 +50,7 @@ void main() {
       totalPages: 1,
     );
     dataStateSuccess = DataSuccess(
-      moviesList,
+      moviesListEntity,
     );
     dataStateEmpty = const DataEmpty();
     dataStateFailed = const DataFailed(
