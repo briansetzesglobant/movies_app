@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_app/util/strings.dart';
-import 'app_routes.dart';
-import 'di.dart';
-import 'util/colors_constants.dart';
+import 'src/config/route/app_routes.dart';
+import 'src/core/util/colors_constants.dart';
+import 'src/core/util/strings.dart';
+import 'src/di.dart';
 
 void main() {
   final Di di = Di();

@@ -1,5 +1,5 @@
 import 'package:envied/envied.dart';
-import 'package:movies_app/util/api_service.dart';
+import '../src/core/util/api_service.dart';
 
 part 'env.g.dart';
 

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movies_app/widget/movie_card.dart';
+import 'package:movies_app/src/presentation/widget/movie_card.dart';
 
 void main() {
   testWidgets('MovieCard() should display the movie card',

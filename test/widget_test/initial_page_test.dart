@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movies_app/initial_page.dart';
+import 'package:movies_app/src/presentation/view/initial_page.dart';
 
 void main() {
   testWidgets('InitialPage() should display the initial page',
