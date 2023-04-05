@@ -63,6 +63,7 @@ void main() {
     test(
       'getMoviesList() should get the status success',
       () async {
+        movieBloc.initialize();
         when(movieUseCase()).thenAnswer((_) async => dataStateSuccess);
         movieBloc.getMoviesList();
         verify(movieUseCase()).called(1);
@@ -72,6 +73,7 @@ void main() {
     test(
       'getMoviesList() should get the status empty',
       () async {
+        movieBloc.initialize();
         when(movieUseCase()).thenAnswer((_) async => dataStateEmpty);
         movieBloc.getMoviesList();
         verify(movieUseCase()).called(1);
@@ -81,12 +83,16 @@ void main() {
     test(
       'getMoviesList() should get the status failed',
       () async {
+        movieBloc.initialize();
         when(movieUseCase()).thenAnswer((_) async => dataStateFailed);
         movieBloc.getMoviesList();
         verify(movieUseCase()).called(1);
       },
     );
 
-    test('dispose() should close all observers', () => movieBloc.dispose());
+    test('dispose() should close all observers', () {
+      movieBloc.initialize();
+      movieBloc.dispose();
+    });
   });
 }

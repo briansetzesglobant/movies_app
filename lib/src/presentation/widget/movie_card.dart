@@ -31,7 +31,7 @@ class MovieCard extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(
-          Numbers.movieCardPadding,
+          Numbers.smallXPadding,
         ),
         child: Column(
           children: [

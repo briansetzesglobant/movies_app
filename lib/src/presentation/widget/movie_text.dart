@@ -17,7 +17,7 @@ class MovieText extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(
-          Numbers.movieTextPadding,
+          Numbers.mediumPadding,
         ),
         child: Text(
           text,

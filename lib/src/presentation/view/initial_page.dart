@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../core/util/colors_constants.dart';
 import '../../core/util/numbers.dart';
 import '../../core/util/strings.dart';
+import '../widget/movie_button.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({
@@ -37,31 +37,25 @@ class _InitialPageState extends State<InitialPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: Numbers.initialPagePaddingHorizontal,
+                  horizontal: Numbers.bigPadding,
                 ),
-                child: ElevatedButton(
-                  key: const Key('elevated-button-1'),
+                child: MovieButton(
+                  text: sortingWay ? textAscending : textDescending,
                   onPressed: () {
                     setState(() {
                       sortingWay = !sortingWay;
                     });
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorsConstants.appThemeColor,
-                  ),
-                  child: Text(
-                    sortingWay ? textAscending : textDescending,
-                    style: const TextStyle(
-                      fontSize: Numbers.initialPageTextSize,
-                    ),
-                    textAlign: TextAlign.center,
+                  key: const Key(
+                    Strings.movieButton1TestKey,
                   ),
                 ),
               ),
               const SizedBox(
                 height: Numbers.initialPageSizedBox,
               ),
-              ElevatedButton(
+              MovieButton(
+                text: Strings.movieUseCaseTitle,
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     Strings.homeRoute,
@@ -72,21 +66,12 @@ class _InitialPageState extends State<InitialPage> {
                     },
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorsConstants.appThemeColor,
-                ),
-                child: const Text(
-                  Strings.movieUseCaseTitle,
-                  style: TextStyle(
-                    fontSize: Numbers.initialPageTextSize,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
               ),
               const SizedBox(
                 height: Numbers.initialPageSizedBox,
               ),
-              ElevatedButton(
+              MovieButton(
+                text: Strings.popularityMovieUseCaseTitle,
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     Strings.homeRoute,
@@ -98,16 +83,17 @@ class _InitialPageState extends State<InitialPage> {
                     },
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorsConstants.appThemeColor,
-                ),
-                child: const Text(
-                  Strings.popularityMovieUseCaseTitle,
-                  style: TextStyle(
-                    fontSize: Numbers.initialPageTextSize,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+              ),
+              const SizedBox(
+                height: Numbers.initialPageSizedBox,
+              ),
+              MovieButton(
+                text: Strings.imagesPageButtonTitle,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(
+                    Strings.imagesRoute,
+                  );
+                },
               ),
             ],
           ),

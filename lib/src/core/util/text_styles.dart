@@ -8,6 +8,19 @@ abstract class TextStyles {
     color: ColorsConstants.appThemeColor,
     decoration: TextDecoration.underline,
   );
+  static const TextStyle generalTextStyle = TextStyle(
+    fontSize: Numbers.bigXTextSize,
+  );
+  static const TextStyle imagesPageDefaultMessageTextStyle = TextStyle(
+    fontSize: Numbers.bigXTextSize,
+    color: Colors.white,
+  );
+  static const TextStyle imagesPageTitleTextStyle = TextStyle(
+    fontSize: Numbers.bigTextSize,
+  );
+  static const TextStyle imagesPageSnackBarTextStyle = TextStyle(
+    fontSize: Numbers.mediumTextSize,
+  );
   static const TextStyle noSuccessMessageTextStyle = TextStyle(
     fontSize: Numbers.noSuccessMessageFontSize,
     color: ColorsConstants.appThemeColor,

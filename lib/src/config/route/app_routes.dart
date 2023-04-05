@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/util/strings.dart';
 import '../../presentation/view/home_page.dart';
+import '../../presentation/view/images_page.dart';
 import '../../presentation/view/initial_page.dart';
 import '../../presentation/widget/movie_text.dart';
 
@@ -22,6 +23,12 @@ class AppRoutes {
                 as Map<String, dynamic>)[Strings.argumentUseCase],
             sortingWay: (settings.arguments!
                 as Map<String, dynamic>)[Strings.argumentSortingWay],
+          ),
+        );
+      case Strings.imagesRoute:
+        return MaterialPageRoute(
+          builder: (_) => ImagesPage(
+            title: Strings.imagesPageTitle,
           ),
         );
       default:
