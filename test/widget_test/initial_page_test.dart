@@ -40,7 +40,7 @@ void main() {
         find.text(
             'Movies will be shown ascending by title\n"Click to change to descending"'),
         findsOneWidget);
-    final key1 = find.byKey(const Key('elevated-button-1'));
+    final key1 = find.byKey(const Key('movie-button-1'));
     await tester.tap(key1);
     await tester.pumpAndSettle();
     expect(

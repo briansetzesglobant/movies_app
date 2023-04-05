@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    widget.blocInterface.initialize();
     widget.blocInterface.getMoviesList();
   }
 

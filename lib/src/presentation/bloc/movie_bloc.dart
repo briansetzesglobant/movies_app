@@ -28,15 +28,17 @@ class MovieBloc extends BlocInterface {
               : Strings.descendingSortStrategy,
         );
 
-  final StreamController<DataState<MoviesListEntity>>
-      _moviesListStreamController = StreamController();
+  late StreamController<DataState<MoviesListEntity>>
+      _moviesListStreamController;
 
   @override
   Stream<DataState<MoviesListEntity>> get moviesListStream =>
       _moviesListStreamController.stream;
 
   @override
-  Future<void> initialize() async {}
+  Future<void> initialize() async {
+    _moviesListStreamController = StreamController();
+  }
 
   @override
   void dispose() {
