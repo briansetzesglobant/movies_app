@@ -3,6 +3,7 @@ import '../../core/util/strings.dart';
 import '../../presentation/view/home_page.dart';
 import '../../presentation/view/images_page.dart';
 import '../../presentation/view/initial_page.dart';
+import '../../presentation/view/map_page.dart';
 import '../../presentation/widget/movie_text.dart';
 
 class AppRoutes {
@@ -29,6 +30,12 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => ImagesPage(
             title: Strings.imagesPageTitle,
+          ),
+        );
+      case Strings.mapRoute:
+        return MaterialPageRoute(
+          builder: (_) => MapPage(
+            title: Strings.mapPageButtonTitle,
           ),
         );
       default:

@@ -19,7 +19,11 @@ abstract class TextStyles {
     fontSize: Numbers.bigTextSize,
   );
   static const TextStyle imagesPageSnackBarTextStyle = TextStyle(
+    fontSize: Numbers.mediumXTextSize,
+  );
+  static const TextStyle mapPageMarkerTextStyle = TextStyle(
     fontSize: Numbers.mediumTextSize,
+    fontWeight: FontWeight.bold,
   );
   static const TextStyle noSuccessMessageTextStyle = TextStyle(
     fontSize: Numbers.noSuccessMessageFontSize,

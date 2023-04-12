@@ -18,11 +18,12 @@ abstract class Numbers {
   static const int appThemeColorHex = 0xFF032445;
   static const double noSuccessMessageFontSize = 40.0;
 
-  static const double mediumTextSize = 17.0;
+  static const double mediumTextSize = 15.0;
+  static const double mediumXTextSize = 17.0;
   static const double bigTextSize = 25.0;
   static const double bigXTextSize = 30.0;
 
-  static const double smallPadding = 8.0;
+  static const double smallPadding = 5.0;
   static const double smallXPadding = 10.0;
   static const double mediumPadding = 20.0;
   static const double bigPadding = 35.0;
@@ -31,4 +32,13 @@ abstract class Numbers {
   static const double imagesPageHeight = 200.0;
   static const double imagesPageWidthSizedBox = 280.0;
   static const double imagesPageHeightSizedBox = 180.0;
+
+  static const double mapPageInitialLatitude = -37.328755;
+  static const double mapPageInitialLongitude = -59.136917;
+  static const double mapPageZoom = 15.0;
+  static const double mapPageMarkerWidth = 120.0;
+  static const double mapPageMarkerHeight = 100.0;
+  static const double mapPageMarkerIconSize = 50.0;
+  static const int mapTimerDuration = 30;
+  static const int mapNotificationId = 1;
 }

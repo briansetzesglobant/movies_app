@@ -2,12 +2,14 @@ abstract class Strings {
   static const String initialRoute = '/';
   static const String homeRoute = '/homePage';
   static const String imagesRoute = '/imagesPage';
+  static const String mapRoute = '/mapPage';
   static const String appRouteDefault = 'Undefined route';
   static const String emptyGridMessage = 'No movies to show';
   static const String error = 'An error has occurred while loading movies:';
   static const String initialPageTitle = 'Movies App';
   static const String imagesPageTitle = 'Images';
   static const String movieCollectionName = 'movie';
+  static const String locationCollectionName = 'location';
   static const String argumentTitle = 'title';
   static const String argumentUseCase = 'useCase';
   static const String argumentSortingWay = 'sortingWay';
@@ -18,6 +20,7 @@ abstract class Strings {
   static const String movieUseCaseTitle = 'All movies';
   static const String popularityMovieUseCaseTitle = 'The most popular movies';
   static const String imagesPageButtonTitle = 'Select images';
+  static const String mapPageButtonTitle = 'Show map';
 
   static const String ascendingSortStrategy = 'AscendingSortStrategy';
   static const String descendingSortStrategy = 'DescendingSortStrategy';
@@ -50,4 +53,15 @@ abstract class Strings {
       'No images selected to save';
   static const String imageStorageCache = 'cache/';
   static const String imageStorageImages = 'images';
+
+  static const String mapOpenStreetMap =
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  static const String mapExample = 'com.example.app';
+  static const String mapDateFormat = 'dd/MM/yyyy hh:mm:ss a';
+  static const String mapNotificationIcon = 'notification_icon';
+  static const String mapNotificationChannelId = 'channelId';
+  static const String mapNotificationChannelName = 'channelName';
+  static const String mapNotificationTitle = 'New location detected';
+  static const String mapNotificationBody =
+      'A location was inserted into the database';
 }
