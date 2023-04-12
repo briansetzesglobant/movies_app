@@ -95,6 +95,17 @@ class _InitialPageState extends State<InitialPage> {
                   );
                 },
               ),
+              const SizedBox(
+                height: Numbers.initialPageSizedBox,
+              ),
+              MovieButton(
+                text: Strings.mapPageButtonTitle,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(
+                    Strings.mapRoute,
+                  );
+                },
+              ),
             ],
           ),
         ),

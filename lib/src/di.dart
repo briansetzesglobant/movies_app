@@ -5,15 +5,23 @@ import 'package:movies_app/src/presentation/bloc/movie_bloc.dart';
 import 'package:movies_app/src/data/repository/movie_repository.dart';
 import 'core/util/strings.dart';
 import 'data/data_source/local/images_storage.dart';
+import 'data/data_source/local/location_data_base.dart';
 import 'data/data_source/local/movie_data_base.dart';
 import 'data/data_source/remote/movie_api_service.dart';
 import 'domain/use_case/implementation/movie_use_case.dart';
 import 'domain/use_case/implementation/popularity_movie_use_case.dart';
+import 'presentation/bloc/map_bloc.dart';
 import 'strategy/ascending_sort_strategy.dart';
 import 'strategy/descending_sort_strategy.dart';
 
 class Di {
   void injectDependencies() {
+    Get.lazyPut(
+      () => LocationDatabase.instance,
+    );
+    Get.lazyPut(
+      () => MapBloc(),
+    );
     Get.lazyPut(
       () => ImagesStorage.instance,
     );
